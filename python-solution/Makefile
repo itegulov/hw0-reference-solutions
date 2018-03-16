@@ -1,2 +1,2 @@
 run:
-	python3 a.py
+	python3 solution.py
