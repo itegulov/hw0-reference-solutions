@@ -10,6 +10,9 @@ all: $(ANTLR_RESULTS) $(CLASSES)
 run:
 	java -cp out:${ANTLR} ${MAINCLASS}
 
+pack:
+	zip hw0.zip -r Makefile src lib
+
 clean:
 	rm -rf out
 	rm -f src/parser/*.java

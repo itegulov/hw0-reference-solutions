@@ -10,6 +10,9 @@ all: out compile
 run:
 	${SCALA} -cp out:${DEPS} ${MAINCLASS}
 
+pack:
+	zip hw0.zip -r Makefile src lib
+
 clean:
 	rm -rf out
 
