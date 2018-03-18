@@ -1,10 +1,12 @@
+.PHONY: pack all run clean
 GENERATED=src/parser.mli src/parser.ml src/lexer.ml
 OCAMLC=ocamlc # ocamlopt for speed
 PACKAGE=hw0.zip
+
 ifeq ($(OS),Windows_NT)
 	DEL=del /f
 else
-	DEL=rf -f
+	DEL=rm -f
 endif
 
 all: main.exe
@@ -21,7 +23,7 @@ main.exe: $(GENERATED) src/tree.cmi
 pack: $(GENERATED)
 	zip $(PACKAGE) -r Makefile src
 
-$(GENERATED): src/parser.mly src/lexer.mll
+$(GENERATED): src/lexer.mll src/parser.mly
 	ocamllex src/lexer.mll 
 	ocamlyacc src/parser.mly
 
