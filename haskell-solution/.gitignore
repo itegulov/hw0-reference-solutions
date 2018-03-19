@@ -1,0 +1,8 @@
+**.hi
+**.o
+**.swo
+**.swp
+**.zip
+parser
+src/Lexer.hs
+src/Parser.hs
