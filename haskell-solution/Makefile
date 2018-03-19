@@ -1,5 +1,5 @@
-#HC=/opt/ghc/7.10.3/bin/ghc
-HC=ghc
+HC=/opt/ghc/7.10.3/bin/ghc
+#HC=ghc
 LIBS=$(strip $(wildcard ./lib/*))
 LPATH=$(shell echo $(LIBS) | tr ' ' ':')
 SOURCES=src/Main.hs src/Grammar.hs
