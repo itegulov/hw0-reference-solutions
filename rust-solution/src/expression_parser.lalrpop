@@ -1,0 +1,28 @@
+use expression::Expression;
+
+grammar;
+
+pub expr: Expression = {
+    disjunction,
+    <l:disjunction> "->" <r:expr> => Expression::Implication(Box::new(l), Box::new(r))
+};
+
+disjunction: Expression = {
+    conjunction,
+    <l:disjunction> "|" <r:conjunction> => l | r
+};
+
+conjunction: Expression = {
+    negation,
+    <l:conjunction> "&" <r:negation> => l & r
+};
+
+negation: Expression = {
+    variable,
+    "!" <n:negation> => !n,
+    "(" <expr> ")"
+};
+
+variable: Expression = {
+    r"[A-Z]([A-Z0-9])*" => Expression::Variable(<>.to_string())
+};
