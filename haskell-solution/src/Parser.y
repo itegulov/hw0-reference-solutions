@@ -38,5 +38,5 @@ Term
   | IDENT              { Var $1 }
 
 {
-parseError = fail "Parse error"
+parseError = error "Parse error"
 }
