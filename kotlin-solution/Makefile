@@ -4,13 +4,16 @@ SOURCES = $(shell find src -type f -name "*.kt")
 CLASSES = $(patsubst src/%.kt,out/%.class,$(SOURCES))
 DEPS = lib/better-parse-0.3.2.jar
 MAINCLASS = Main
+KOTLINC=kotlinc
+KOTLIN=kotlin
 
-all: prepare-kotlin out compile
+all: out compile
 
 run:
 	${KOTLIN} -cp out:${DEPS} -Djava.io.tmpdir=tmp ${MAINCLASS}
 
 pack:
+	rm -f hw0.zip
 	zip hw0.zip -r Makefile src lib
 
 clean:
@@ -22,5 +25,3 @@ compile: ${SOURCES}
 
 out:
 	mkdir -p out
-
-include kotlin.mk
